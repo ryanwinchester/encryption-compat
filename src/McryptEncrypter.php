@@ -1,11 +1,10 @@
 <?php
 
-namespace Illuminate\Encryption;
+namespace SevenShores\EncryptionCompat;
 
 use Exception;
 use RuntimeException;
 use Illuminate\Contracts\Encryption\DecryptException;
-use Illuminate\Contracts\Encryption\EncryptException;
 use Illuminate\Contracts\Encryption\Encrypter as EncrypterContract;
 
 /**
@@ -211,4 +210,20 @@ class McryptEncrypter extends BaseEncrypter implements EncrypterContract
 
         return MCRYPT_RAND;
     }
+
+    /**
+     * Set the encryption mode (not really).
+     *
+     * @param  string  $mode
+     * @return void
+     */
+    public function setMode($mode) {}
+
+    /**
+     * Set the encryption cipher (not really).
+     *
+     * @param  string  $cipher
+     * @return void
+     */
+    public function setCipher($cipher) {}
 }

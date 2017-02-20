@@ -2,7 +2,9 @@
 
 namespace SevenShores\EncryptionCompat;
 
+use Illuminate\Support\Str;
 use Illuminate\Contracts\Encryption\DecryptException;
+use Symfony\Component\Security\Core\Util\StringUtils;
 
 abstract class BaseEncrypter
 {
@@ -72,10 +74,10 @@ abstract class BaseEncrypter
      */
     protected function validMac(array $payload)
     {
-        $bytes = random_bytes(16);
+        $bytes = Str::randomBytes(16);
 
         $calcMac = hash_hmac('sha256', $this->hash($payload['iv'], $payload['value']), $bytes, true);
 
-        return hash_equals(hash_hmac('sha256', $payload['mac'], $bytes, true), $calcMac);
+        return StringUtils::equals(hash_hmac('sha256', $payload['mac'], $bytes, true), $calcMac);
     }
 }
