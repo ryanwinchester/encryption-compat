@@ -3,11 +3,9 @@
 namespace SevenShores\EncryptionCompat;
 
 use RuntimeException;
-use Illuminate\Support\Str;
-use Illuminate\Contracts\Encryption\DecryptException;
-use Illuminate\Contracts\Encryption\Encrypter as EncrypterContract;
+use Symfony\Component\Security\Core\Util\SecureRandom;
 
-class Encrypter extends BaseEncrypter implements EncrypterContract
+class Encrypter extends BaseEncrypter
 {
     /**
      * The algorithm used for encryption.
@@ -21,7 +19,6 @@ class Encrypter extends BaseEncrypter implements EncrypterContract
      *
      * @param  string  $key
      * @param  string  $cipher
-     * @return void
      *
      * @throws \RuntimeException
      */
@@ -57,11 +54,11 @@ class Encrypter extends BaseEncrypter implements EncrypterContract
      * @param  string  $value
      * @return string
      *
-     * @throws \Illuminate\Contracts\Encryption\EncryptException
+     * @throws EncryptException
      */
     public function encrypt($value)
     {
-        $iv = Str::randomBytes($this->getIvSize());
+        $iv = with(new SecureRandom)->nextBytes($this->getIvSize());
 
         $value = \openssl_encrypt(serialize($value), $this->cipher, $this->key, 0, $iv);
 
@@ -89,7 +86,7 @@ class Encrypter extends BaseEncrypter implements EncrypterContract
      * @param  string  $payload
      * @return string
      *
-     * @throws \Illuminate\Contracts\Encryption\DecryptException
+     * @throws DecryptException
      */
     public function decrypt($payload)
     {
@@ -115,20 +112,4 @@ class Encrypter extends BaseEncrypter implements EncrypterContract
     {
         return 16;
     }
-
-    /**
-     * Set the encryption mode (not really).
-     *
-     * @param  string  $mode
-     * @return void
-     */
-    public function setMode($mode) {}
-
-    /**
-     * Set the encryption cipher (not really).
-     *
-     * @param  string  $cipher
-     * @return void
-     */
-    public function setCipher($cipher) {}
 }

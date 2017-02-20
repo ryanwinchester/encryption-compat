@@ -14,12 +14,9 @@ class EncryptionServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton('encrypter', function ($app) {
-            $config = $app->make('config')->get('app');
-
-            $key = $config['key'];
-
-            $cipher = $config['cipher'];
+        $this->app->bindShared('encrypter', function ($app) {
+            $key = $app['config']['app.key'];
+            $cipher = $app['config']['app.cipher'];
 
             if (Encrypter::supported($key, $cipher)) {
                 return new Encrypter($key, $cipher);

@@ -2,8 +2,7 @@
 
 namespace SevenShores\EncryptionCompat;
 
-use Illuminate\Support\Str;
-use Illuminate\Contracts\Encryption\DecryptException;
+use Symfony\Component\Security\Core\Util\SecureRandom;
 use Symfony\Component\Security\Core\Util\StringUtils;
 
 abstract class BaseEncrypter
@@ -33,7 +32,7 @@ abstract class BaseEncrypter
      * @param  string  $payload
      * @return array
      *
-     * @throws \Illuminate\Contracts\Encryption\DecryptException
+     * @throws DecryptException
      */
     protected function getJsonPayload($payload)
     {
@@ -74,7 +73,7 @@ abstract class BaseEncrypter
      */
     protected function validMac(array $payload)
     {
-        $bytes = Str::randomBytes(16);
+        $bytes = with(new SecureRandom)->nextBytes(16);
 
         $calcMac = hash_hmac('sha256', $this->hash($payload['iv'], $payload['value']), $bytes, true);
 

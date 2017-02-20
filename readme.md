@@ -4,10 +4,10 @@ Encryption compatibility for Laravel < 5.1 on PHP 7.1
 
 ### Install
 
-- `composer require "sevenshores/encryption-compat:~5.0"`
-- remove `'Illuminate\Encryption\EncryptionServiceProvider'` from `config/app.php`
-- add `'SevenShores\EncryptionCompat\EncryptionServiceProvider'` to `config/app.php`
-- change `cipher` to `'AES-128-CBC'` in `config/app.php`
+- `composer require "sevenshores/encryption-compat:~4.1"`
+- remove `'Illuminate\Encryption\EncryptionServiceProvider'` from `app/config/app.php`
+- add `'SevenShores\EncryptionCompat\EncryptionServiceProvider'` to `app/config/app.php`
+- add `cipher => 'AES-128-CBC',` to `app/config/app.php`
 - run `php artisan key:generate`
 
 #### Notes

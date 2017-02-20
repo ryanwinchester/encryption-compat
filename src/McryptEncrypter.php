@@ -4,13 +4,11 @@ namespace SevenShores\EncryptionCompat;
 
 use Exception;
 use RuntimeException;
-use Illuminate\Contracts\Encryption\DecryptException;
-use Illuminate\Contracts\Encryption\Encrypter as EncrypterContract;
 
 /**
  * @deprecated since version 5.1. Use Illuminate\Encryption\Encrypter.
  */
-class McryptEncrypter extends BaseEncrypter implements EncrypterContract
+class McryptEncrypter extends BaseEncrypter
 {
     /**
      * The algorithm used for encryption.
@@ -67,7 +65,7 @@ class McryptEncrypter extends BaseEncrypter implements EncrypterContract
      * @param  string  $value
      * @return string
      *
-     * @throws \Illuminate\Contracts\Encryption\EncryptException
+     * @throws EncryptException
      */
     public function encrypt($value)
     {
@@ -130,7 +128,7 @@ class McryptEncrypter extends BaseEncrypter implements EncrypterContract
      * @param  string  $iv
      * @return string
      *
-     * @throws \Illuminate\Contracts\Encryption\DecryptException
+     * @throws DecryptException
      */
     protected function mcryptDecrypt($value, $iv)
     {
@@ -210,20 +208,4 @@ class McryptEncrypter extends BaseEncrypter implements EncrypterContract
 
         return MCRYPT_RAND;
     }
-
-    /**
-     * Set the encryption mode (not really).
-     *
-     * @param  string  $mode
-     * @return void
-     */
-    public function setMode($mode) {}
-
-    /**
-     * Set the encryption cipher (not really).
-     *
-     * @param  string  $cipher
-     * @return void
-     */
-    public function setCipher($cipher) {}
 }
