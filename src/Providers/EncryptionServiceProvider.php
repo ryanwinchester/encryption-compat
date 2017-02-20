@@ -31,4 +31,16 @@ class EncryptionServiceProvider extends ServiceProvider
 
         $this->app->register(KeyGeneratorServiceProvider::class);
     }
+
+    /**
+     * Get the services provided by the provider.
+     *
+     * @return array
+     */
+    public function provides()
+    {
+        $class = $this->app->resolveProviderClass(KeyGeneratorServiceProvider::class);
+
+        return $class->provides();
+    }
 }

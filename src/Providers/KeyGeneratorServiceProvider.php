@@ -21,11 +21,11 @@ class KeyGeneratorServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bindShared('command.key.generatenew', function($app) {
+        $this->app->bindShared('command.key.generate-new', function($app) {
             return new KeyGenerateNewCommand($app['files']);
         });
 
-        $this->commands('command.key.generatenew');
+        $this->commands(array('command.key.generate-new'));
     }
 
     /**
@@ -35,6 +35,6 @@ class KeyGeneratorServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return array('command.key.generatenew');
+        return array('command.key.generate-new');
     }
 }

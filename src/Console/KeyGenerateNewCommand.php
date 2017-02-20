@@ -2,7 +2,6 @@
 
 namespace SevenShores\EncryptionCompat\Console;
 
-use Illuminate\Support\Str;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 
