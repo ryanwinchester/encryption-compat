@@ -1,0 +1,16 @@
+{
+    "name": "ryanwinchester/encrypter-compat",
+    "description": "Encryption Service Provider for Laravel < 5.1 for PHP 7.1 compatibility",
+    "type": "library",
+    "license": "Apache-2.0",
+    "authors": [{
+        "name": "Ryan Winchester",
+        "email": "code@ryanwinchester.ca"
+    }],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "SevenShores\\EncryptionCompat\\": "src/"
+        }
+    }
+}
