@@ -1,9 +1,11 @@
 <?php
 
-namespace SevenShores\EncryptionCompat;
+namespace SevenShores\EncryptionCompat\Providers;
 
 use RuntimeException;
 use Illuminate\Support\ServiceProvider;
+use SevenShores\EncryptionCompat\Encrypter;
+use SevenShores\EncryptionCompat\McryptEncrypter;
 
 class EncryptionServiceProvider extends ServiceProvider
 {
@@ -26,5 +28,7 @@ class EncryptionServiceProvider extends ServiceProvider
                 throw new RuntimeException('No supported encrypter found. The cipher and / or key length are invalid.');
             }
         });
+
+        $this->app->register(KeyGeneratorServiceProvider::class);
     }
 }

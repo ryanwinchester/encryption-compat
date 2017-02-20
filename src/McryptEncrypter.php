@@ -4,6 +4,7 @@ namespace SevenShores\EncryptionCompat;
 
 use Exception;
 use RuntimeException;
+use SevenShores\EncryptionCompat\Exceptions\DecryptException;
 
 /**
  * @deprecated since version 5.1. Use Illuminate\Encryption\Encrypter.

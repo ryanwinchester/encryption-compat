@@ -2,6 +2,7 @@
 
 namespace SevenShores\EncryptionCompat;
 
+use SevenShores\EncryptionCompat\Exceptions\DecryptException;
 use Symfony\Component\Security\Core\Util\SecureRandom;
 use Symfony\Component\Security\Core\Util\StringUtils;
 

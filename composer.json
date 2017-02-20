@@ -8,6 +8,9 @@
         "email": "code@ryanwinchester.ca"
     }],
     "require": {},
+    "require-dev": {
+        "laravel/framework": "4.1.*"
+    },
     "autoload": {
         "psr-4": {
             "SevenShores\\EncryptionCompat\\": "src/"

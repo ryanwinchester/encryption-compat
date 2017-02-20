@@ -1,6 +1,6 @@
 <?php
 
-namespace SevenShores\EncryptionCompat;
+namespace SevenShores\EncryptionCompat\Exceptions;
 
 use RuntimeException;
 

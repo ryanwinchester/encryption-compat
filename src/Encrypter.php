@@ -3,6 +3,8 @@
 namespace SevenShores\EncryptionCompat;
 
 use RuntimeException;
+use SevenShores\EncryptionCompat\Exceptions\DecryptException;
+use SevenShores\EncryptionCompat\Exceptions\EncryptException;
 use Symfony\Component\Security\Core\Util\SecureRandom;
 
 class Encrypter extends BaseEncrypter
