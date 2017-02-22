@@ -12,7 +12,7 @@ class KeyGeneratorServiceProvider extends ServiceProvider
      *
      * @var bool
      */
-    protected $defer = true;
+    // protected $defer = true;
 
     /**
      * Register the service provider.
@@ -25,16 +25,6 @@ class KeyGeneratorServiceProvider extends ServiceProvider
             return new KeyGenerateNewCommand($app['files']);
         });
 
-        $this->commands(array('command.key.generate-new'));
-    }
-
-    /**
-     * Get the services provided by the provider.
-     *
-     * @return array
-     */
-    public function provides()
-    {
-        return array('command.key.generate-new');
+        $this->commands(KeyGenerateNewCommand::class);
     }
 }
